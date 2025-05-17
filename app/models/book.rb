@@ -1,4 +1,4 @@
 class Book < ApplicationRecord
-  valedates :title,presence:true
-  valedates :body,presence:true
+  validates :title,presence:true
+  validates :body,presence:true
 end
