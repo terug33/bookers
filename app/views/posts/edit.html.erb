@@ -13,7 +13,7 @@
 
 
 
-<%= form_with model:@book, local: true do |f| %>
+<%= form_with model:@book, url: post_path(@book),method: :patch, local: true do |f| %>
   <p>
     <%= f.label :title %><br>
     <%= f.text_field :title %>
