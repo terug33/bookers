@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   def index
+    @book = Book.new
+    @books = Book.order(:id)
   end
 
   def show
