@@ -1,4 +1,4 @@
-class PostsController < ApplicationController
+class BooksController < ApplicationController
   def index
     @book = Book.new
     @books = Book.order(:id)
@@ -8,15 +8,12 @@ class PostsController < ApplicationController
     @book = Book.find(params[:id])
   end
 
-  def new
-  end
-
   def create
     @book = Book.new(book_params)
 
     if @book.save
       flash[:notice] = "Book was successfully created."
-      redirect_to posts_path
+      redirect_to @book
     else
       @books = Book.order(:id)
       flash.now[:alert] = "There was an error saving the book."
@@ -33,7 +30,7 @@ class PostsController < ApplicationController
 
     if @book.update(book_params)
       flash[:notice] = "Book was successfully updated."
-      redirect_to post_path(@book)
+      redirect_to book_path(@book)
     else
       flash.now[:alert] = "There was an error updating the book."
       render :edit
@@ -44,7 +41,7 @@ class PostsController < ApplicationController
     @book = Book.find(params[:id])
     @book.destroy
     flash[:notice] = "Book was successfully deleted."
-    redirect_to posts_path
+    redirect_to @book
   end
   
   private
